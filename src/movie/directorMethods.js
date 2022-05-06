@@ -20,11 +20,11 @@ exports.listDirectors = async() => {
 exports.updateDirector = async(updateObj) => {
     try {
         let temp = await Director.findOne({
-            where: {id: updateObj.id}
+            where: {name: updateObj.name}
         })
         await Director.upsert({
             id: temp.id,
-            name: updateObj.name
+            name: updateObj.newName
         });
 
     } catch (error) {

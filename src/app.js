@@ -15,13 +15,16 @@ try {
 
     // #### MOVIE CRUD ####
     if (yargsObj.add) {
-        //add movie to database
+        //add movie to database - example: 
+            //node src/app.js --add --title "The Terminator" --actor "Arnie S" --rating 15 --score 83
         await addMovie({title:yargsObj.title, actor: yargsObj.actor, rating: yargsObj.rating, metacritic_score: yargsObj.score})
     } else if (yargsObj.listMovies) {
-        // list all movies        
+        // list all movies - example: 
+                // node src/app.js --listMovies 
         console.log(await listMovies());
     } else if (yargsObj.update) {
         //update one movie
+            // node src/app.js --update --movie "The Terminator" --title "Terminator 2" --actor "Linda Hamilton" 
         await updateMovie(yargsObj.movie, 
             {
             title:yargsObj.title, 
@@ -43,10 +46,12 @@ try {
         // list directors
         console.log(await listDirectors());
     } else if (yargsObj.updateDirector) {
-        // update director
-        await updateDirector({name: yargsObj.name, id: yargsObj.id})
+        // update director - example:
+            // node src/app.js --updateDirector --name "James Cameron" --newName "Steven Spielbergo"
+        await updateDirector({name: yargsObj.name, id: yargsObj.id, newName: yargsObj.newName})
     }  else if (yargsObj.deleteDirector) {
-        // delete director
+        // delete director - example:
+            // node src/app.js --deleteDirector --name "Steven Spielbergo"
         await deleteDirector({name: yargsObj.name}) 
     }
     
